@@ -1,0 +1,28 @@
+<html>
+   <head>
+      <title>Angular JS Includes</title>
+      <script src="https://code.jquery.com/jquery-3.0.0.min.js" ></script>
+   </head>
+   <body>
+      <h2>AngularJS Sample Application</h2>
+      <div ng-app = "" ng-controller = "customerController">       
+            <div ng-repeat = "cust in customers">
+               <p>Name : {{ cust.Name }}<br></p>
+               <p>Age : {{ cust.age }}<br></p>
+               <p>No : {{ cust.no }}<br></p>
+            </div>       
+      </div>
+      <script>
+         function customerController($scope,$http) {
+            alert('im in');
+            //var url = "data.php";
+         
+            $http.get("data2.php").success( function(response) {
+               alert('im in too');
+               $scope.customers = response;
+            }); 
+         }
+      </script>
+      <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>   
+   </body>
+</html>

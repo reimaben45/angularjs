@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>insert</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.js" ></script>
+	 <script src="https://code.jquery.com/jquery-3.0.0.min.js" ></script>
+	 <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+</head>
+<body>
+  <h4>insert some values for the customer details</h4>
+  <div ng-app = "" ng-controller = "deleteCustomers">
+
+    Name: <input type="text" name="name" id="name" ng-model="name" value=""/> <br/>
+     <input type="submit" name="submit" value="delete" ng-click="deleteData()" />
+    
+   </div>
+<script>
+    // var app = angular.module('myApp',[]);
+      function deleteCustomers($scope,$http){
+      	alert('in 1');
+      	// $scope.name = $('#name').val();
+	    // $scope.age = $('#age').val();
+	    // $scope.no = $('#no').val();
+	    // alert($scope.no);
+         $scope.deleteData=function(){
+          alert('in 2'); 
+         	$http.post("deletee.php", { 
+         		'name':$scope.name, 
+         		
+               }) 
+         	.success( function(response) {
+               alert('im in too');
+               $scope.customers = response;
+            });  
+         }
+         };
+</script>
+</body>
+</html>

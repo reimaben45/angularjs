@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>insert</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.js" ></script>
+	 <script src="https://code.jquery.com/jquery-3.0.0.min.js" ></script>
+	 <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+</head>
+<body>
+  <h4>insert some values for the customer details</h4>
+  <div ng-app = "" ng-controller = "insertCustomers">
+ <form name="multiform" id="multiform" action="">
+    Name: <input type="text" name="name" id="name" ng-model="name" value=""/> <br/>
+    Age :<input type="text" name="age" id="age" ng-model="age" value="" /> <br/>
+    No :<input type="text" name="no" id="no" ng-model="no"/><br/>
+     <input type="submit" name="submit" value="submit" ng-click="insertData()" />
+     </form>
+   </div>
+   <div id="regTitle"></div>
+
+<script>
+    // var app = angular.module('myApp',[]);
+      function insertCustomers($scope,$http){
+      	alert('in 1');
+      	// $scope.name = $('#name').val();
+	    // $scope.age = $('#age').val();
+	    // $scope.no = $('#no').val();
+	    // alert($scope.no);
+         $scope.insertData=function(){
+          alert('in 2'); 
+         	$http.post("inser.php", { 
+         		'name':$scope.name, 
+         		'age':$scope.age, 
+         		'no':$scope.no,
+               }) 
+         	.success( function(response) {
+               document.write(response);
+
+              // $scope.customers = response;
+               $("#regTitle").html(response);
+            });  
+         }
+         };
+</script>
+</body>
+</html>
